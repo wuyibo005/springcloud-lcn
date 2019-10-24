@@ -23,14 +23,15 @@ public class Service {
     public String start(int money) {
         String user = "shen";
         String state = bankBClient.addMoney(money,user);
+        System.out.println("业务B执行状态="+state);
         if ("success".equals(state)){
             Account account =  new Account();
             account.setMoney(money);
             account.setUser(user);
             int res = accountDao.update(account);
-            throw new RuntimeException("error runtime");
-            //return res>0?"success":"error";
+            //throw new RuntimeException("error runtime");
+            return res>0?"success":"error";
         }
-        return "error";
+        return "分布式事务测试";
     }
 }

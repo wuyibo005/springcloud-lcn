@@ -1,9 +1,7 @@
 package com.example.banka;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @Description TODO
@@ -17,6 +15,7 @@ public class Controller {
     Service service;
 
     @GetMapping("/start")
+    @ResponseBody
     public String start(@RequestParam("money") int money){
         return service.start(money);
     }
